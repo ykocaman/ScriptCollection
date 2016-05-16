@@ -1,4 +1,6 @@
 #!/bin/bash
+# usage: ./multi_pdf_compresser.sh targetDir/
+#
 
 output="output"
 
