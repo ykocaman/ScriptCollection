@@ -12,6 +12,8 @@ do
 	counter=$(($counter+1))
 	echo -n "$counter) $file"
 	mv $file "$originals/$file" > /dev/null 2>&1
-	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dDownsampleColorImages=true -dColorImageResolution=150 -dNOPAUSE  -dBATCH -sOutputFile=$file "$originals/$file"  > /dev/null 2>&1 
+	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dDownsampleColorImages=true -dColorImageResolution=150 -dNOPAUSE  -dBATCH \
+	-dOptimize=true -dConvertCMYKImagesToRGB=true -dColorConversionStrategy=/sRGB -dColorImageDownsampleType=/Bicubic -dGrayImageDownsampleType=/Bicubic \
+	-dMonoImageDownsampleType=/Bicubic -sOutputFile=$file "$originals/$file"  > /dev/null 2>&1 
 	echo "> OK"
 done
